@@ -9,7 +9,7 @@ import {
 import Animated, { useSharedValue, withSpring } from 'react-native-reanimated';
 
 // constant to stock my logo image
-const logo = require('../../assets/welcome.png');
+const logo = require('../../assets/Welcome_logo.png');
 
 export default function WelcomeScreen() {
   // I personnalize padding of my logo container 1 and 2 to animated
@@ -34,13 +34,13 @@ export default function WelcomeScreen() {
     );
     // call this function continue to Home page after animated transtion of my paddings
     setTimeout(() => navigation.navigate('Home'), 2500);
-  }, []);
+  }, [100]);
 
   return (
     <>
-      <View style={styles.container}>
+      <View className='flex-1 justify-center items-center bg-[#1b7305]'>
         <StatusBar style="light" backgroundColor="#01360a" />
-        // logo of nestor_mealt welcome page
+        {/* logo of nestor_mealt welcome page */}
         <Animated.View
           style={{
             backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -53,11 +53,11 @@ export default function WelcomeScreen() {
               borderRadius: '50%',
               padding: ring1padding,
             }}>
-            <Image style={styles.logo} source={logo} />
+            <Image source={logo} style={{ width: hp(22), height: hp(22) }} />
           </Animated.View>
         </Animated.View>
-        // My title and slogan
-        <View style={styles.descrb}>
+        {/* My title and slogan */}
+        <View className="justify-center items-center mt-5">
           <Text style={{ color: 'white', fontSize: hp(5), fontWeight: 'bold' }}>
             FoodieLab
           </Text>
@@ -76,21 +76,3 @@ export default function WelcomeScreen() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1b7305',
-  },
-  logo: {
-    width: hp(22),
-    height: hp(22),
-  },
-  descrb: {
-    alignItems: 'center',
-    color: 'white',
-    marginTop: 10,
-  },
-});
